@@ -2,16 +2,6 @@ hgrip(){
 history | grep $1
 }
 
-#----- AWS -------
-
-s3ls(){
-aws s3 ls s3://$1
-}
-
-s3cp(){
-aws s3 cp $2 s3://$1 
-}
-
 #----- misc -----
 certspotter(){
 curl -s https://certspotter.com/api/v0/certs\?domain\=$1 | jq '.[].dns_names[]' | sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1
@@ -37,11 +27,6 @@ curl http://ipinfo.io/$1
 dirsearch(){
 cd /tools/dirsearch*
 python3 dirsearch.py -e . -u $1
-}
-
-sqlmap(){
-cd /tools/sqlmap*
-python sqlmap.py -u $1 
 }
 
 knock(){
